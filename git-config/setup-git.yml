@@ -1,0 +1,16 @@
+---
+
+- name: Setup git config
+  hosts: all
+  tasks:
+    - name: Set git name
+      community.general.git_config:
+        name: user.name
+        scope: global
+        value: "Name"
+
+    - name: Set git email
+      community.general.git_config:
+        name: user.email
+        scope: global
+        value: "email@example.com"
