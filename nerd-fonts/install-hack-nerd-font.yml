@@ -1,0 +1,21 @@
+---
+
+- name: Download and install Hack nerd font
+  hosts: all
+  become: false
+  tasks:
+    - name: Create .fonts directory
+      ansible.builtin.file:
+        path: "{{ lookup('env', 'HOME') }}/.fonts"
+        state: directory
+
+    - name: Check if Hack font exists
+      ansible.builtin.file:
+        path: "{{ lookup('env', 'HOME') }}/.fonts/Hack Nerd Font"
+        state: directory
+
+    - name: Download and extract Hack nerd font
+      ansible.builtin.unarchive:
+        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.tar.xz
+        dest: "{{ lookup('env', 'HOME') }}/.fonts/Hack Nerd Font"
+        remote_src: yes
