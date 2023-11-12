@@ -2,12 +2,13 @@
 
 - name: Setup git config
   hosts: all
+  become: false
   tasks:
     - name: "Include secrets from encrypted_vars.yml"
       include_vars:
         file:
           ../secrets/encrypted_vars.yml
-      no_log: true
+      no_log: true # Prevents leaking secrets.
 
     - name: Set git name using secrets
       community.general.git_config:
