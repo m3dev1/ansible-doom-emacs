@@ -1,0 +1,18 @@
+---
+
+- name: Install Emacs & Dependencies
+  hosts: all
+  become: true
+  tasks:
+    - name: Install dependencies
+      ansible.builtin.yum:
+        name:
+          - git
+          - findutils
+          - fd-find
+          - ripgrep
+
+    - name: Install Emacs
+      ansible.builtin.dnf:
+        name: emacs
+        state: present
