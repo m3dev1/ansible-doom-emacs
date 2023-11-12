@@ -9,5 +9,5 @@ git config --global user.email = "email@example.com"
 ```
 
 # TODO
-- [ ] Configure encrypted variables
+- [x] Configure encrypted values with Ansible Vault
 - [ ] Convert to roles

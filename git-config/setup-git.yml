@@ -3,14 +3,20 @@
 - name: Setup git config
   hosts: all
   tasks:
-    - name: Set git name
+    - name: "Include secrets from encrypted_vars.yml"
+      include_vars:
+        file:
+          ../secrets/encrypted_vars.yml
+      no_log: true
+
+    - name: Set git name using secrets
       community.general.git_config:
         name: user.name
         scope: global
-        value: "Name"
+        value: "{{ git_name }}"
 
-    - name: Set git email
+    - name: Set git email using secrets
       community.general.git_config:
         name: user.email
         scope: global
-        value: "email@example.com"
+        value: "{{ git_email }}"
