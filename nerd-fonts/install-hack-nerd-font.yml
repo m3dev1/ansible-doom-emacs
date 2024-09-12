@@ -3,6 +3,9 @@
 - name: Download and install Hack nerd font
   hosts: all
   become: false
+  vars_files:
+    - vars.yml
+
   tasks:
     - name: Create .fonts directory
       ansible.builtin.file:
@@ -16,6 +19,6 @@
 
     - name: Download and extract Hack nerd font
       ansible.builtin.unarchive:
-        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.tar.xz
+        src: "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ nerd_fonts_version }}/Hack.tar.xz"
         dest: "{{ lookup('env', 'HOME') }}/.fonts/Hack Nerd Font"
         remote_src: yes
