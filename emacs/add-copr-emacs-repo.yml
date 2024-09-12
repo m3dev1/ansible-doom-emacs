@@ -9,4 +9,4 @@
         host: copr.fedorainfracloud.org
         state: enabled
         name: bhavin192/emacs-pretest
-        chroot: fedora-38-x86_64
+        chroot: fedora-40-x86_64
